@@ -71,7 +71,7 @@ namespace Builder
                     Builder builder = new Builder(acadDb, transaction, modelSpace);
 
                     //перебираем все блоки из файла Excel
-                    for (int i = 1; i <= rowsCount; i++)
+                    for (int i = 2; i <= rowsCount; i++)
                     {
                         //добавляем в модель блоки
                         builder.AddBlock(blockTable[excelRange.Cells[i, 1].Value2.ToString()],ptStart, xInsert);
@@ -80,7 +80,7 @@ namespace Builder
                         builder.AddText(ptStart, xInsert, excelRange.Cells[i, 1].Value2.ToString());
 
                         //создаем размеры для каждого блока после первого
-                        if (i != 1)
+                        if (i > 2)
                         {
                             builder.AddDimension(xInsert, xPrevous, yStart);
                             xPrevous = xInsert;
